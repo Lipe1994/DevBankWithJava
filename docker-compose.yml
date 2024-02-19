@@ -20,7 +20,7 @@ services:
 
   java_api_1:
     container_name: java_api_1
-    image: dev_bank_with_java:latest
+    image: lipeferreira1609/dev_bank_with_java:latest
     depends_on:
       - java_pg_db
     deploy:
@@ -31,7 +31,7 @@ services:
 
   java_api_2:
     container_name: java_api_2
-    image: dev_bank_with_java:latest
+    image: lipeferreira1609/dev_bank_with_java:latest
     depends_on:
       - java_pg_db
       - java_api_1
