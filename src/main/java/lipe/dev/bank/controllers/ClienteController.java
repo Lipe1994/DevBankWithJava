@@ -29,7 +29,7 @@ public class ClienteController {
     {
         if (id < 1 || id > 5)
         {
-            logger.warn("Id não encontrado");
+            //logger.warn("Id não encontrado");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, null);
         }
 
@@ -38,7 +38,7 @@ public class ClienteController {
                 ((command.valor - (int)command.valor) > 0) ||
                 (command.tipo != 'd' && command.tipo != 'c'))
         {
-            logger.warn("Não passou nas validações do command");
+            //logger.warn("Não passou nas validações do command");
             throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "");
         }
 

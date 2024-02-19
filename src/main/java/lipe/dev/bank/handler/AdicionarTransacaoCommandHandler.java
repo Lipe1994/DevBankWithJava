@@ -27,7 +27,7 @@ public class AdicionarTransacaoCommandHandler {
         var optionalLimite = repository.obterLimite(id);
         if (optionalLimite.isEmpty())
         {
-            logger.warn("Cliente não encontrado");
+            //logger.warn("Cliente não encontrado");
             throw new BusinessException("Cliente não encontrado");
         }
 
@@ -40,7 +40,7 @@ public class AdicionarTransacaoCommandHandler {
             case 'd':
                 if (abs((saldo - (int)command.valor)) > limite)
                 {
-                    logger.warn("Não tem limite");
+                    //logger.warn("Não tem limite");
                     throw new BusinessException("Não tem limite");
                 }
                 saldo -= (int)command.valor;
@@ -49,14 +49,14 @@ public class AdicionarTransacaoCommandHandler {
                 saldo +=  (int)command.valor;
                 break;
             default:
-                logger.warn("Tipo desconhecido");
+                //logger.warn("Tipo desconhecido");
                 throw new BusinessException("Tipo desconhecido");
         }
 
         var rowsAffected = repository.AtualizaSaldo(id, saldo, versao, (versao + 1));
         if(rowsAffected < 1)
         {
-            logger.warn("Não foi possível atualizar o saldo");
+            //logger.warn("Não foi possível atualizar o saldo");
             throw new BusinessException("Não foi possível atualizar o saldo");
         }
 
