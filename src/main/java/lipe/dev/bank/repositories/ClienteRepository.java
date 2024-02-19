@@ -1,5 +1,6 @@
 package lipe.dev.bank.repositories;
 
+import lipe.dev.bank.controllers.view_models.Limite;
 import lipe.dev.bank.entities.*;
 import lipe.dev.bank.repositories.projections.IExtrato;
 import lipe.dev.bank.repositories.projections.ILimite;
@@ -15,9 +16,14 @@ import java.util.Optional;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long>
 {
-    @Modifying
-    @Query(value = "UPDATE cliente SET saldo=?2, versao=?4 WHERE id=?1 AND versao=?3", nativeQuery = true)
-    int AtualizaSaldo(int id, int saldo, int oldVersao, int versao);
+
+    @Query(value = "WITH updated as (UPDATE cliente SET saldo=saldo-?2 WHERE id=?1 AND abs(saldo - ?2) <= limite RETURNING *) select limite, saldo, true linhaAfetada from updated", nativeQuery = true)
+    ILimite debitar(int id, int valor);
+
+    @Query(value = "WITH updated as (UPDATE cliente SET saldo=saldo+?2 WHERE id=?1 RETURNING *) select limite, saldo, true linhaAfetada from updated", nativeQuery = true)
+    ILimite creditar(int id, int valor);
+
+
     @Modifying
     @Query(value = "INSERT INTO transacao( cliente_id, valor, tipo, descricao, criado_em) values( ?1, ?2, ?3, ?4, ?5)", nativeQuery = true)
     void AdicionaTransacao(int id, int valor, char tipo, String descricao, Instant criadoEm);

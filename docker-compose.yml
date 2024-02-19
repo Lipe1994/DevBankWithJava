@@ -15,8 +15,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.30"
-          memory: "100MB"
+          cpus: "0.35"
+          memory: "140MB"
 
   java_api_1:
     container_name: java_api_1
@@ -27,7 +27,7 @@ services:
       resources:
         limits:
           cpus: "0.50"
-          memory: "220MB"
+          memory: "200MB"
 
   java_api_2:
     container_name: java_api_2
@@ -39,7 +39,7 @@ services:
       resources:
         limits:
           cpus: "0.50"
-          memory: "220MB"
+          memory: "200MB"
 
 
   nginx:
@@ -55,7 +55,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.20"
+          cpus: "0.15"
           memory: "10MB"
 
 networks:
