@@ -36,10 +36,9 @@ public class AdicionarTransacaoCommandHandler {
                 throw new BusinessException("Tipo desconhecido");
         }
 
-
         if(resumo == null || !resumo.getLinhaAfetada())
         {
-            logger.warn("Não foi possível atualizar o saldo");
+            //logger.warn("Não foi possível atualizar o saldo");
             throw new BusinessException("Não foi possível atualizar o saldo");
         }
 
