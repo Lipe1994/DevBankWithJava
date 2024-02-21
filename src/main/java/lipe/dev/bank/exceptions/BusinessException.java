@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public class BusinessException extends RuntimeException{
+final public class BusinessException extends RuntimeException{
     private final String code = "business";
 
     @NonNull

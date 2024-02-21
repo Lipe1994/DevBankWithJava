@@ -1,8 +1,10 @@
 package lipe.dev.bank.controllers.view_models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import theleo.jstruct.Struct;
 
-public class Limite {
+@Struct
+final public class Limite {
 
     public Limite(int limite, int saldo)
     {

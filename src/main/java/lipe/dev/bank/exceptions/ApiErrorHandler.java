@@ -17,7 +17,7 @@ import java.util.Locale;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @RestControllerAdvice
 @RequiredArgsConstructor
-public class ApiErrorHandler {
+final public class ApiErrorHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException exception, Locale locale)
     {

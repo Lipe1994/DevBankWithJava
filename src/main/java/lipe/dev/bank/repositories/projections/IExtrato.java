@@ -1,6 +1,8 @@
 package lipe.dev.bank.repositories.projections;
 
 
+import theleo.jstruct.Struct;
+
 import java.time.Instant;
 
 public interface IExtrato {

@@ -1,5 +1,7 @@
 package lipe.dev.bank.controllers;
 
+import lipe.dev.bank.controllers.view_models.Saldo;
+import lipe.dev.bank.controllers.view_models.TransacaoResumo;
 import lipe.dev.bank.handler.commands.AdicionarTransacaoCommand;
 import lipe.dev.bank.handler.AdicionarTransacaoCommandHandler;
 import lipe.dev.bank.controllers.view_models.Extrato;
@@ -55,10 +57,10 @@ public class ClienteController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, null);
         }
 
-        var projecao = repository.obterExtrato(id);
+        final var projecao = repository.obterExtrato(id);
 
-        var extrato = new Extrato();
-        var saldo = extrato.new Saldo();
+        final var extrato = new Extrato();
+        final var saldo = new Saldo();
         saldo.total = projecao.getFirst().getTotal();
         saldo.limite = projecao.getFirst().getLimite();
 
@@ -68,7 +70,7 @@ public class ClienteController {
             for(int i = 0; i < projecao.size(); i++)
             {
                 var t = projecao.get(i);
-                extrato.ultimasTransacoes.add(extrato.new TransacaoResumo(t.getValor(), t.getTipo(), t.getDescricao(), t.getCriadoEm()));
+                extrato.ultimasTransacoes.add(new TransacaoResumo(t.getValor(), t.getTipo(), t.getDescricao(), t.getCriadoEm()));
             }
 
         return extrato;
