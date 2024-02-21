@@ -17,8 +17,13 @@
 - [@l1peferreira](https://www.instagram.com/l1peferreira/) - Instagram
 
 
+###### Detalhes para executar do projeto:
+    - JDK 21 instalado;
+    - Configurar o banco de dados no arquivo de [properties](https://github.com/Lipe1994/DevBankWithJava/blob/main/src/main/resources/application.properties);
+    - Tem um arquivo de criação das tabelas necessárias no banco, na raiz do projeto([init.sql](https://github.com/Lipe1994/DevBankWithJava/blob/main/init.sql));
+    - Eu uso o Intellij e dou run.
 
-###### Detalhes de execução e montagem do projeto:
+###### Detalhes para dockerização do projeto:
 
  - Compilar o projeto:
 ```shell
@@ -29,6 +34,9 @@
 ```shell
 docker build -t lipeferreira1609/dev_bank_with_java:latest .  
 ```
+
+
+###### Pode rodar direto no compose(a imagem setada no compose já está no docker-hub):
 
  - Montar um volume com docker-compose:
 ```shell
