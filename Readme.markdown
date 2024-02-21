@@ -17,6 +17,7 @@
 - [@l1peferreira](https://www.instagram.com/l1peferreira/) - Instagram
 
 
+##
 ###### Detalhes para executar do projeto:
 
 - JDK 21 instalado;
@@ -27,6 +28,8 @@
     
 - Eu uso o Intellij e dou run.
 
+
+##
 ###### Detalhes para dockerização do projeto:
 
  - Compilar o projeto:
@@ -39,8 +42,9 @@
 docker build -t lipeferreira1609/dev_bank_with_java:latest .  
 ```
 
+##
 
-###### Pode rodar direto no compose(a imagem setada no compose já está no docker-hub):
+###### Pode rodar direto no compose(a imagem setada no compose já está no docker-hub com tudo que precisa):
 
  - Montar um volume com docker-compose:
 ```shell
