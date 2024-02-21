@@ -18,10 +18,14 @@
 
 
 ###### Detalhes para executar do projeto:
-    - JDK 21 instalado;
-    - Configurar o banco de dados no arquivo de [properties](https://github.com/Lipe1994/DevBankWithJava/blob/main/src/main/resources/application.properties);
-    - Tem um arquivo de criação das tabelas necessárias no banco, na raiz do projeto([init.sql](https://github.com/Lipe1994/DevBankWithJava/blob/main/init.sql));
-    - Eu uso o Intellij e dou run.
+
+- JDK 21 instalado;
+    
+- Configurar o banco de dados no arquivo de [properties](https://github.com/Lipe1994/DevBankWithJava/blob/main/src/main/resources/application.properties);
+    
+- Tem um arquivo de criação das tabelas necessárias no banco, na raiz do projeto [init.sql](https://github.com/Lipe1994/DevBankWithJava/blob/main/init.sql) ;
+    
+- Eu uso o Intellij e dou run.
 
 ###### Detalhes para dockerização do projeto:
 
