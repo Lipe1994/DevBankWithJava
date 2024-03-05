@@ -14,22 +14,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Long>
+public interface ClienteRepository extends JpaRepository<Cliente, Integer>
 {
 
-    @Query(value = "WITH updated as (UPDATE cliente SET saldo=saldo-?2 WHERE id=?1 AND abs(saldo - ?2) <= limite RETURNING *) select limite, saldo, true linhaAfetada from updated", nativeQuery = true)
+    @Query(value = "WITH updated as (UPDATE cliente SET saldo=saldo-?2 WHERE  id = ?1 AND ((saldo - ?2) >= (- limite)) RETURNING *) select limite, saldo, true linhaAfetada from updated", nativeQuery = true)
     ILimite debitar(int id, int valor);
 
     @Query(value = "WITH updated as (UPDATE cliente SET saldo=saldo+?2 WHERE id=?1 RETURNING *) select limite, saldo, true linhaAfetada from updated", nativeQuery = true)
     ILimite creditar(int id, int valor);
 
-
     @Modifying
     @Query(value = "INSERT INTO transacao( cliente_id, valor, tipo, descricao, criado_em) values( ?1, ?2, ?3, ?4, ?5)", nativeQuery = true)
     void AdicionaTransacao(int id, int valor, char tipo, String descricao, Instant criadoEm);
-
-    @Query(value = "SELECT l.limite, l.saldo, l.versao FROM cliente l WHERE Id=?1", nativeQuery = true)
-    Optional<ILimite> obterLimite(int id);
 
     @Query(value = "SELECT c.id, c.saldo total, c.limite, t.valor, t.descricao, t.tipo, t.criado_em AS criadoEm \n" +
             "   FROM Cliente c \n" +
